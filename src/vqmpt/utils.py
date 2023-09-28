@@ -20,7 +20,7 @@ def get_inference_models(
     :param device: which device to load the models on.
     :param n_e: Number of dictonary variables to be used.
     :param e_dim: Dimension of the dictionary latent vector.
-    :returns list:
+    :returns tuple: quantizer model, decoder model, environment encoder, ar model
     """
     # Define the decoder model
     with open(osp.join(decoder_model_folder, "model_params.json"), "r") as f:
