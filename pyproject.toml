@@ -1,0 +1,20 @@
+[project]
+name = "vqmpt"
+version = "0.0.1"
+authors = [
+  { name="Jacob J. Johnson", email="jjj025@ucsd.edu" },
+]
+description = "A package defining VQ-MPT models and sampling function"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: BSD 3-Clause",
+    "Operating System :: OS Independent",
+]
+[project.urls]
+"Homepage" = "https://github.com/pypa/sampleproject"
+"Bug Tracker" = "https://github.com/pypa/sampleproject/issues"
+[build-systems]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
