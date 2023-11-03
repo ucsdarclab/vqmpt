@@ -11,7 +11,11 @@ from .modules import autoregressive
 
 
 def get_inference_models(
-    decoder_model_folder, ar_model_folder, device, n_e=2048, e_dim=8
+    decoder_model_folder,
+    ar_model_folder,
+    device,
+    n_e=2048,
+    e_dim=8,
 ):
     """
     Return the quantizer, decoder, cross-attention, and auto-regressive models.
