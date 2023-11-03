@@ -173,7 +173,7 @@ def get_beam_search_path(
 
 def get_search_dist(
     norm_start_n_goal,
-    map_data,
+    depth_points,
     context_encoder,
     decoder_model,
     ar_model,
@@ -185,7 +185,7 @@ def get_search_dist(
     Get the search distribution for a given start and goal state.
     :param norm_start_n_goal: numpy tensor with the normalized start and
         goal
-    :param map_data: 3D Point cloud data passed as an numpy array
+    :param depth_points: 3D Point cloud data passed as an numpy array
     :param context_encoder: context encoder model
     :param decoder_model: decoder model to retrive distributions
     :param ar_model: auto-regressive model
@@ -200,6 +200,7 @@ def get_search_dist(
         norm_start_n_goal,
         dtype=torch.float,
     )
+    map_data = tg_data.Data(pos=torch.as_tensor(depth_points, dtype=torch.float, device=device))
     env_input = tg_data.Batch.from_data_list([map_data])
     context_output = context_encoder(env_input, start_n_goal[None, :].to(device))
     # Find the sequence of dict values using beam search
