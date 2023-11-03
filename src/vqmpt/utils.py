@@ -232,10 +232,10 @@ def get_search_dist(
             dist_sigma = dist_sigma[None, :]
         # ========================== append search with goal  ================
         search_dist_mu = torch.zeros((reached_goal[0, 1] + 1, 7))
-        search_dist_mu[: reached_goal[0, 1], :6] = dist_mu
+        search_dist_mu[: reached_goal[0, 1], :] = dist_mu
         search_dist_mu[reached_goal[0, 1], :] = torch.tensor(norm_start_n_goal[-1])
         search_dist_sigma = torch.diag_embed(torch.ones((reached_goal[0, 1] + 1, 7)))
-        search_dist_sigma[: reached_goal[0, 1], :6, :6] = dist_sigma
+        search_dist_sigma[: reached_goal[0, 1], :, :] = dist_sigma
         search_dist_sigma[reached_goal[0, 1], :, :] = (
             search_dist_sigma[reached_goal[0, 1], :, :] * 0.01
         )
