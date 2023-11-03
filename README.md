@@ -1,6 +1,6 @@
 # Vector Quantized - Motion Planning Transformers
 
-This github repo contains the models, and helper functions for generating sampling distributions using [VQ-MPT](https://sites.google.com/eng.ucsd.edu/vq-mpt/home).
+This github repo contains the models, and helper functions for generating sampling distributions using [VQ-MPT](https://sites.google.com/ucsd.edu/vq-mpt/home).
 
 ## Installing the package
 
