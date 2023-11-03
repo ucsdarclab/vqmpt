@@ -18,7 +18,7 @@ pip install -e .
 
 ## Loading models
 
-You can get the pre-trained models for the panda robot from here - *coming soon*
+You can get the pre-trained models for the panda robot from here - [Panda Models](https://drive.google.com/file/d/1B0KVBxYBi0fCQcvagponF6j_2TikZfN7/view?usp=sharing)
 
 To load the models, use the following:
 
