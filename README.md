@@ -16,6 +16,9 @@ To install the package, go to cloned repo, and run the following command.
 pip install -e .
 ```
 
+# Runing inside a container
+We provide the dockerfiles to run our models. But you need to have our [base](https://drive.google.com/file/d/1DFC5nKoPTKF6ASZHnqi5FA8NF54LKD7A/view?usp=sharing) image downloaded and [loaded](https://docs.docker.com/engine/reference/commandline/load/) on your system before you build the container. Afterwards, either clone or attach this repo inside the container to get started with using our models.
+
 ## Loading models
 
 You can get the pre-trained models for the panda robot from here - [Panda Models](https://drive.google.com/file/d/1B0KVBxYBi0fCQcvagponF6j_2TikZfN7/view?usp=sharing)
