@@ -172,8 +172,7 @@ def get_beam_search_path(
 
 
 def get_search_dist(
-    normalized_path,
-    path,
+    norm_start_n_goal,
     map_data,
     context_encoder,
     decoder_model,
@@ -184,12 +183,21 @@ def get_search_dist(
 ):
     """
     Get the search distribution for a given start and goal state.
-    :returns (torch.tensor, torch.tensor, float): Returns an array of mean
-    and covariance matrix
+    :param norm_start_n_goal: numpy tensor with the normalized start and
+        goal
+    :param map_data: 3D Point cloud data passed as an numpy array
+    :param context_encoder: context encoder model
+    :param decoder_model: decoder model to retrive distributions
+    :param ar_model: auto-regressive model
+    :param quantizer_model: quantizer model
+    :param num_keys: Total number of keys in the dictionary
+    :param device: device on which to perform torch operations
+    :returns (torch.tensor, torch.tensor, float): Returns an array of
+        mean and covariance matrix
     """
     # Get the context.
     start_n_goal = torch.as_tensor(
-        normalized_path[[0, -1], :6],
+        norm_start_n_goal,
         dtype=torch.float,
     )
     env_input = tg_data.Batch.from_data_list([map_data])
@@ -224,7 +232,7 @@ def get_search_dist(
         # ========================== append search with goal  ================
         search_dist_mu = torch.zeros((reached_goal[0, 1] + 1, 7))
         search_dist_mu[: reached_goal[0, 1], :6] = dist_mu
-        search_dist_mu[reached_goal[0, 1], :] = torch.tensor(normalized_path[-1])
+        search_dist_mu[reached_goal[0, 1], :] = torch.tensor(norm_start_n_goal[-1])
         search_dist_sigma = torch.diag_embed(torch.ones((reached_goal[0, 1] + 1, 7)))
         search_dist_sigma[: reached_goal[0, 1], :6, :6] = dist_sigma
         search_dist_sigma[reached_goal[0, 1], :, :] = (
