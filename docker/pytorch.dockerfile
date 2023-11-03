@@ -42,8 +42,10 @@ RUN pip install torch \
                 torchvision \
                 torchaudio --index-url https://download.pytorch.org/whl/cu118
 
+# Libgl1 used for open3d
 RUN apt-get update && apt-get install -y \
     git \
+    libgl1 \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install einops \
