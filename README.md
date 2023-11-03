@@ -27,12 +27,12 @@ from vqmpt import utils
 import torch
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
-quantizer_model, decoder_model, context_env_encoder, ar_model = utils.get_inference_model(
-    decoder_model_folder, 
-    ar_model_folder, 
-    device, 
-    n_e=2048, 
-    e_dim=8
+quantizer_model, decoder_model, context_env_encoder, ar_model = utils.get_inference_models(
+    decoder_model_folder,
+    ar_model_folder,
+    device,
+    n_e=2048,
+    e_dim=8,
 )
 ```
 
